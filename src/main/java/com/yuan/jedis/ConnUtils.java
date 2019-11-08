@@ -12,9 +12,9 @@ public class ConnUtils {
         Jedis jedis = null;
         try {
             jedis = new Jedis(REIDS_IP, REIDS_PORT);
-            System.out.println("redis连接成功");
+            System.err.println("redis连接成功");
         } catch (Exception e) {
-            System.out.println("redis连接失败");
+            System.err.println("redis连接失败");
             e.printStackTrace();
         }
         return jedis;
@@ -23,6 +23,7 @@ public class ConnUtils {
     public static void closeJedis(Jedis jedis) {
         if (jedis != null) {
             jedis.close();
+            System.err.println("关闭连接");
         }
     }
 
